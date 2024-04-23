@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CDaLoong</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta name="baidu-site-verification" content="codeva-VBBBn6hyor" />
+    <link rel="icon" href="./c.png" />
+    <link rel="stylesheet" href="./Static/themes/vue.min.css" />
+    <link rel="stylesheet" href="./Static/themes/gitalk.css" />
+  </head>
+
+  <body>
+    <div id="app">Please wait...</div>
+    <script>
+      window.$docsify = {
+        name: "CDaLoong", // 文档标题，会显示在侧边栏顶部
+        loadSidebar: true, // 加载自定义侧边栏，设置为 true 后会加载 _sidebar.md 文件，也可以自定义加载的文件名。
+        subMaxLevel: 3, // 副标题层级
+        sidebarDisplayLevel: 0, // 设置侧边栏显示级别 0 为都不展开
+        auto2top: true, // 切换页面后是否自动跳转到页面顶部。
+        themeColor: "#4C98F7", // 替换主题色。利用 CSS3 支持变量的特性，对于老的浏览器有 polyfill 处理。
+        logo: "./CDaLoong-logo.png", // 在侧边栏中出现的网站图标，可以使用CSS来更改大小
+        search: {
+          paths: "auto",
+          placeholder: "Type to search",
+          noData: "No Results",
+          depth: 3, // 搜索标题的最大层级
+        },
+        // 定义路由别名，可以更自由的定义路由规则。 支持正则。
+        alias: {
+          "/.*/_sidebar.md": "/_sidebar.md",
+        },
+        plugins: [],
+        // 设置请求资源的请求头。
+        requestHeaders: {},
+        count: {
+          position: "bottom",
+        },
+      };
+    </script>
+    <script src="./Static/docsify.min.js"></script>
+    <script src="./Static/plugins/catalog.js"></script>
+    <script src="./Static/plugins/search.min.js"></script>
+    <script src="./Static/plugins/zoom-image.min.js"></script>
+    <script src="./Static/plugins/docsify-copy-code.min.js"></script>
+    <script src="./Static/plugins/docsify-pagination.min.js"></script>
+    <script src="./Static/plugins/countable.js"></script>
+    <script src="./Static/plugins/front-matter.min.js"></script>
+    <script src="./Static/plugins/emoji.min.js"></script>
+    <script src="./Static/plugins/docsify-sidebar-collapse.min.js"></script>
+    <script src="./Static/plugins/blueimp-md5@2.19.0.js"></script>
+
+    <script>
+      window.$docsify.plugins = [].concat((hook, vm) => {
+        hook.doneEach(() => {
+          let title = decodeURIComponent(
+            vm.route.path.split("/").slice(-1).pop()
+          );
+          if (!title) title = window.$docsify.name;
+          document.title = title;
+        });
+      }, $docsify.plugins);
+    </script>
+  </body>
+</html>
