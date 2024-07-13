@@ -7,15 +7,21 @@
   * [微格式](HTML/微格式.md "微格式")
   * [替换元素](HTML/替换元素.md "替换元素")
   * [页面可见性](HTML/页面可见性.md "页面可见性")
-  * [HTML汇总](HTML/HTML汇总.md.md "HTML汇总")
+  * [HTML汇总](HTML/HTML汇总.md "HTML汇总")
+  * [HTML5新特性](HTML/HTML5新特性.md "HTML5新特性")
+  * [canvas](HTML/canvas.md "canvas")
+  * [svg](HTML/svg.md "svg")
 
 * CSS
   * [CSS单位总结](CSS/CSS单位总结.md "CSS单位总结")
   * [居中方式总结](CSS/居中方式总结.md "居中方式总结")
+  * [常见的布局方式](CSS/常见的布局方式.md "常见的布局方式")
+  * [flex弹性盒](CSS/flex弹性盒.md "flex弹性盒")
   * [隐藏元素的方式总结](CSS/隐藏元素的方式总结.md "隐藏元素的方式总结")
   * [浮动](CSS/浮动.md "浮动")
   * [定位总结](CSS/定位总结.md "定位总结")
   * [BFC](CSS/BFC.md "BFC")
+  * [CSS盒模型](CSS/CSS盒模型.md "CSS盒模型")
   * [CSS属性的计算过程](CSS/CSS属性的计算过程.md "CSS属性的计算过程")
   * [CSS层叠继承规则总结](CSS/CSS层叠继承规则总结.md "CSS层叠继承规则总结")
   * [import指令](CSS/import指令.md "import指令")
@@ -31,6 +37,7 @@
   * [CSS汇总](CSS/CSS汇总.md "CSS汇总")
 
 * JavaScript
+  * [ES6+语法新特性](JavaScript/ES6+语法新特性.md "ES6+语法新特性")
   * [let、var、const的区别](JavaScript/let、var、const的区别.md "let、var、const的区别")
   * [值和引用](JavaScript/值和引用.md "值和引用")
   * [包装类型](JavaScript/包装类型.md "包装类型")
@@ -42,9 +49,11 @@
   * [this指向](JavaScript/this指向.md "this指向")
   * [垃圾回收与内存泄漏](JavaScript/垃圾回收与内存泄漏.md "垃圾回收与内存泄漏")
   * [闭包](JavaScript/闭包.md "闭包")
+  * [异步和同步](JavaScript/异步和同步.md "异步和同步")
+  * [DOM](JavaScript/DOM.md "DOM")
   * [DOM事件的注册和移除](JavaScript/DOM事件的注册和移除.md "DOM事件的注册和移除")
   * [DOM事件的传播机制](JavaScript/DOM事件的传播机制.md "DOM事件的传播机制")
-  * [阻止事件的默认行为](JavaScript/阻止事件的默认行为.md "阻止事件的默认行为")
+  * [阻止事件默认行为](JavaScript/阻止事件默认行为.md "阻止事件默认行为")
   * [递归](JavaScript/递归.md "递归")
   * [属性描述符](JavaScript/属性描述符.md "属性描述符")
   * [Class和普通构造器的区别](JavaScript/Class和普通构造器的区别.md "Class和普通构造器的区别")
@@ -61,6 +70,7 @@
   * [javascript汇总](JavaScript/javascript汇总.md "javascript汇总")
 
 * 浏览器
+  * [浏览器的事件循环](浏览器/浏览器的事件循环.md "浏览器的事件循环")
   * [浏览器的渲染流程](浏览器/浏览器的渲染流程.md "浏览器的渲染流程")
   * [资源提示关键词](浏览器/资源提示关键词.md "资源提示关键词")
   * [浏览器的组成部分](浏览器/浏览器的组成部分.md "浏览器的组成部分")
@@ -154,4 +164,5 @@
   * [Rust学习](Rust/Rust学习.md "Rust学习")
 
 * 指导
-  * [技术面试](指导/技术面试.md "技术面试")
+  * [技术](指导/技术面试.md "技术")
+  * [技能](指导/技能.md "技能")

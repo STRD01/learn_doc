@@ -1,63 +1,123 @@
 # *BFC*
 
+1. 独立的容器
+
+BFC 是一个独立的渲染区域，内部的元素布局不会影响外部的元素。换句话说，BFC 中的元素与外部的元素不会互相覆盖或干扰。
+
+2. 清除浮动
+
+BFC 可以包含内部的浮动元素，从而防止父元素因为子元素浮动而高度塌陷。
+
+3. 边距折叠
+
+在 BFC 内部，垂直方向的边距不会与外部的元素边距发生折叠。也就是 BFC 可以防止 margin 塌陷。
+
+4. 解决非浮动元素被浮动元素覆盖问题
+
+BFC 中的元素不会与浮动元素发生重叠。内部的块级元素会避开浮动元素，形成一个整齐的布局。
+
+## 创建 BFC 的方式
+
+1.	浮动元素 (float):
+
+```css
+.bfc {
+  float: left;
+}
+```
+
+2.	绝对定位元素 (position: absolute 或 position: fixed):
+
+```css
+.bfc {
+  position: absolute;
+}
+```
+
+3.	块格式上下文 (display: inline-block, display: table-cell, display: table-caption, display: flex, display: grid 等):
+
+```css
+.bfc {
+  display: inline-block;
+  display: table-cell;
+  display: table-caption;
+  display: flex;
+  display: grid;
+}
+```
+
+4. overflow 属性不为 visible (overflow: hidden, overflow: scroll, overflow: auto 等):
+
+```css
+.bfc {
+  overflow: hidden;
+  overflow: scroll;
+  overflow: auto;
+}
+```
+
+5. 浮动或清除 (float 或 clear):
+
+```css
+.bfc {
+  float: left;
+  float: none;
+}
+```
+
+6. contain: layout:
+
+```css
+.bfc {
+  contain: layout;
+}
+```
+
+## BFC 的应用场景
+
+1. 清除浮动，解决浮动元素令父元素高度坍塌的问题
+
+当子元素浮动时，父元素的高度可能会塌陷，导致布局问题。通过创建 BFC，可以包含浮动的子元素，解决高度塌陷的问题。
+
+2. 防止边距折叠( margin 塌陷)
+
+两个相邻的块级元素之间的垂直边距会发生折叠。通过创建 BFC，可以防止这种边距折叠。
+
+3. 避免元素重叠
+
+当一个块级元素和浮动元素相遇时，它们可能会发生重叠。通过创建 BFC，可以避免这种重叠。
 
 
 ## 经典真题
-
-
 
 - 介绍下 *BFC* 及其应用
 - 介绍下 *BFC、IFC、GFC* 和 *FFC*
 
 
-
 ## 搞懂各种 *FC*
-
 
 
 一看到  *BFC、IFC、GFC* 和 *FFC*，大家可能会想到 *KFC*。
 
-
-
 <img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2021-09-13-054223.png" alt="image-20210913134223247" style="zoom:50%;" />
-
-
 
 然而这里所说的 *xFC* 和 *KFC* 没有任何关系。
 
-
-
 那么这些 *FC* 究竟是啥呢？
-
-
 
 不着急，我们先搞懂一个，后面的陆陆续续也就融会贯通了。
 
-
-
 我们首先就来看这个 *BFC*，英语全称 *Block formatting contexts*，翻译成中文就是“块级格式化上下文”。
-
-
 
 简单来说，就是页面中的一块渲染区域，并且有一套属于自己的渲染规则，它决定了元素如何对齐内容进行布局，以及与其他元素的关系和相互作用。 当涉及到可视化布局的时候，*BFC* 提供了一个环境，*HTML* 元素在这个环境中按照一定规则进行布局。
 
-
-
 再简短一点，那就是：***BFC* 是一个独立的布局环境，*BFC* 内部的元素布局与外部互不影响**
-
-
 
 这就好比你在你自己家里面，你想怎么摆放你的家具都可以，你家的家具布局并不会影响邻居家的家具布局。
 
-
-
 当然，虽然说 *BFC* 是一个独立的布局环境，里外不影响，但也不是意味着布局没有章法，基本的规矩还是要有的。
 
-
-
 例如，*BFC* 的布局规则有如下几条：
-
-
 
 1. 内部的 *Box* 会在垂直方向一个接着一个地放置。
 2. *Box* 垂直方向上的距离由 *margin* 决定。属于同一个 *BFC* 的两个相邻的 *Box* 的 *margin* 会发生重叠。
