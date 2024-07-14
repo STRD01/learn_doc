@@ -1,54 +1,24 @@
 # *this* 指向
 
-
-
-## 经典真题
-
-
-
 - *this* 的指向哪几种 ？
 
-
-
 ## *this* 指向总结
-
-
 
 *this* 关键字是一个非常重要的语法点。毫不夸张地说，不理解它的含义，大部分开发任务都无法完成。
 
 *this* 可以用在构造函数之中，表示实例对象。除此之外，*this* 还可以用在别的场合。**但不管是什么场合，*this* 都有一个共同点：它总是返回一个对象**。
 
-
-
 关于 *this* 的指向，有一种广为流传的说法就是“谁调用它，*this* 就指向谁”。
 
 这样的说法没有太大的问题，但是并不是太全面。总结起来，*this* 的指向规律有如下几条：
 
-
-
 - 在函数体中，非显式或隐式地简单调用函数时，在严格模式下，函数内的 *this* 会被绑定到 *undefined* 上，在非严格模式下则会被绑定到全局对象 *window/global* 上。
-
-  
-
 - 一般使用 *new* 方法调用构造函数时，构造函数内的 *this* 会被绑定到新创建的对象上。
-
-  
-
 - 一般通过 *call/apply/bind* 方法显式调用函数时，函数体内的 *this* 会被绑定到指定参数的对象上。
-
-  
-
 - 一般通过上下文对象调用函数时，函数体内的 *this* 会被绑定到该对象上。
-
-  
-
 - 在箭头函数中，*this* 的指向是由外层（函数或全局）作用域来决定的。
 
-
-
 当然，真实环境多种多样，下面我们就来根据实战例题逐一梳理。
-
-
 
 ### 全局环境中的 *this*
 
@@ -105,11 +75,7 @@ foo.fn();
 
 这时，*this* 指向的是最后调用它的对象，在 *foo.fn( )* 语句中，this 指向的是 *foo* 对象。
 
-
-
 ### 上下文对象调用中的 *this*
-
-
 
 例题 *4*：
 
@@ -126,8 +92,6 @@ console.log(student.fn() === student); // true
 在上面的代码中，*this* 指向当前的对象 *student*，所以最终会返回 *true*。
 
 当存在更复杂的调用关系时，如以下代码中的嵌套关系，*this* 将指向最后调用它的对象，例如
-
-
 
 例题 *5*：
 
@@ -182,11 +146,7 @@ console.log(o3.fn()); // undefined
 
 这里主要讲一下为什么第三个是 *undefined*。这里将 *o1.fn* 赋值给了 *fn*，所以 *fn* 等价于 *function () { return this.text; }*，然后该函数在调用的时候，是直接 *fn( )* 的形式调用的，并不是以对象的形式，相当于还是全局调用，指向 *window*，所以打印出 *undefined*。
 
-
-
 ### *this* 指向绑定事件的元素
-
-
 
 *DOM* 元素绑定事件时，事件处理函数里面的 *this* 指向绑定了事件的元素。
 
@@ -219,8 +179,6 @@ colorList.addEventListener("click", function (event) {
 当我点击如下位置时打印出来的信息如下：
 
 <img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2021-09-28-033304.png" alt="image-20210928113303839" style="zoom:50%;" />
-
-
 
 有些时候我们会遇到一些困扰，比如在 *div* 节点的事件函数内部，有一个局部的 *callback* 方法，该方法被作为普通函数调用时，*callback* 内部的 *this* 是指向全局对象 *window* 的
 
@@ -255,29 +213,17 @@ document.getElementById('div1').onclick = function(){
 }
 ```
 
-
-
 ### 改变 *this* 指向
 
-
-
 #### 1. *call、apply、bind* 方法修改 *this* 指向
-
-
 
 由于 *JavaScript*  中 *this* 的指向受函数运行环境的影响，指向经常改变，使得开发变得困难和模糊，所以在封装 *sdk* 或者写一些复杂函数的时候经常会用到 *this* 指向绑定，以避免出现不必要的问题。
 
 *call、apply、bind* 基本都能实现这一功能，起到确定 *this* 指向的作用
 
-
-
 ***Function.prototype.call( )***
 
-
-
 *call* 方法可以指定 *this* 的指向（即函数执行时所在的的作用域），然后再指定的作用域中，执行函数。
-
-
 
 ```js
 var obj = {};
@@ -291,8 +237,6 @@ console.log(f.call(obj) === obj) // 改变this 指向 obj
 上面代码中，全局环境运行函数 *f* 时，*this* 指向全局环境（浏览器为 *window* 对象）；
 
 *call* 方法可以改变 *this* 的指向，指定 *this* 指向对象 *obj*，然后在对象 *obj* 的作用域中运行函数 *f*。
-
-
 
 *call* 方法的参数，应该是对象 *obj*，如果参数为空或 *null、undefind*，则默认传参全局对象。
 
@@ -314,8 +258,6 @@ a.call(obj) // 456
 上面代码中，*a* 函数中的 *this* 关键字，如果指向全局对象，返回结果为 *123*。
 
 如果使用 *call* 方法将 *this* 关键字指向 *obj* 对象，返回结果为 *456*。可以看到，如果 *call* 方法没有参数，或者参数为 *null* 或 *undefined*，则等同于指向全局对象。
-
-
 
 如果 *call* 传参不是以上类型，则转化成对应的包装对象，然后传入方法。
 
@@ -358,11 +300,7 @@ Object.prototype.hasOwnProperty.call(obj, 'toString') // false
 
 *call* 方法可以解决这个问题，它将 *hasOwnProperty* 方法的原始定义放到 *obj* 对象上执行，这样无论 *obj* 上有没有同名方法，都不会影响结果。
 
-
-
 ***Function.prototype.apply( )***
-
-
 
 *apply* 和 *call* 作用类似，也是改变 *this* 指向，然后调用该函数，唯一区别是 *apply* 接收数组作为函数执行时的参数。语法如下：
 
@@ -433,11 +371,7 @@ Array.prototype.slice.apply({length: 1}) // [undefined]
 
 从上面代码可以看到，这个方法起作用的前提是，被处理的对象必须有 *length* 属性，以及相对应的数字键。
 
-
-
 ***Function.prototype.bind( )***
-
-
 
 *bind* 用于将函数体内的 *this* 绑定到某个对象，然后返回一个新函数
 
@@ -509,8 +443,6 @@ newAdd(5) // 20
 
 上面代码中，*bind* 方法除了绑定 *this* 对象，还将 *add* 函数的第一个参数 *x* 绑定成 *5*，然后返回一个新函数 *newAdd*，这个函数只要再接受一个参数 *y* 就能运行了。
 
-
-
 如果 *bind* 方法的第一个参数是 *null* 或 *undefined*，等于将 *this* 绑定到全局对象，函数运行时 *this* 指向顶层对象（浏览器为 *window*）。
 
 ```js
@@ -526,15 +458,13 @@ plus5(10) // 15
 
 而且因为 *add* 内部没有 *this*，所以 *bind* 的第一个参数是 *null*，不过这里如果是其他对象，也没有影响。
 
-
-
 *bind* 方法有一些使用注意点。
 
 （1）每一次返回一个新函数
 
 *bind* 方法每运行一次，就返回一个新函数，这会产生一些问题。比如，监听事件的时候，不能写成下面这样。
 
-```
+```js
 element.addEventListener('click', o.m.bind(o));
 ```
 
@@ -672,11 +602,7 @@ bind(f, o)() // 123
 
 上面代码的含义就是，将 *Function.prototype.bind* 方法绑定在 *Function.prototype.call* 上面，所以 *bind* 方法就可以直接使用，不需要在函数实例上使用。
 
-
-
 #### 2. 箭头函数的 *this* 指向
-
-
 
 当我们的 *this* 是以函数的形式调用时，*this* 指向的是全局对象。
 
@@ -700,8 +626,6 @@ obj.test();
 可以看到，普通函数作为对象的一个方法被调用时，*this* 指向当前对象。
 
 在上面的例子中，就是 *obj* 这个对象，*this.x* 的值为 *10*。
-
-
 
 接下来是箭头函数以对象的方式被调用的时候的 *this* 的指向，如下：
 
@@ -730,8 +654,6 @@ obj.test();
 方法很简单，将这段代码放入浏览器运行，在浏览器中用 *var* 所声明的变量会成为全局对象 *window* 的一个属性，如下：
 
 <img src="https://xiejie-typora.oss-cn-chengdu.aliyuncs.com/2021-09-28-052059.png" alt="image-20210928132058878" style="zoom:50%;" />
-
-
 
 接下来我们再来看一个例子，来证明箭头函数的 *this* 指向始终是指向的外层作用域。
 
@@ -783,8 +705,6 @@ const test = new Test("xiejie", 18);
 
 
 ## 真题解答
-
-
 
 - *this* 的指向哪几种 ？
 
