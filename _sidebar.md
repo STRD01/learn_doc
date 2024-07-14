@@ -182,6 +182,7 @@
 
 * Linux
   * [Linux学习](Linux/Linux学习.md "Linux学习")
+  * [Nginx服务器](Linux/Nginx服务器.md "Nginx服务器")
 
 * MySQL
   * [mysql学习](MySQL/mysql学习.md "mysql学习")
